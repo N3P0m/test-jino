@@ -1,26 +1,55 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+  <div class="container">
+    <Select :options="options" :defaultName="'Выбрать сервис'"/>
+    <Select :options="secondOptions" :defaultName="'Тип аккаунта'"/>
+  </div>
+  
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Select from './components/select.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Select,
+  },
+  data() {
+    return {
+      options: [
+        { group: "",
+          groupValues: [{ name: "Хостинг", value: "1" }],
+        },
+        { group: "Спектр",
+          groupValues: [{ name: "Мой сайт на 1C-Битрикс", value: "1" }, { name: "Мой сайт на Joomla!", value: "1" }, { name: "Другой мой сайт на Joomla!", value: "1" }],
+        },
+        { group: "VPS",
+          groupValues: [{ name: "Мой сайт", value: "1" }, { name: "Прокси-сервер", value: "1" }],
+        },
+
+      ],
+
+      secondOptions: [
+        {groupValues: [{ name: "Хостинг", value: "1" }, { name: "Мой сайт на Joomla!", value: "1" }]},
+      ],
+
+      
+  }
   }
 }
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: "PT Sans", sans-serif;
+  font-weight: 400;
+}
+.container {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
 }
 </style>
